@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://emd0ujb6uh32"]
+
+[ext_resource type="Texture2D" uid="uid://bl6da41dh0glv" path="res://Art/Player.png" id="1_y0qk3"]
+[ext_resource type="Script" uid="uid://dsybtwdtw4hj8" path="res://Scripts/PlayerScript.gd" id="2_3y5cq"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3y5cq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_y0qk3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3y5cq"]
+size = Vector2(64, 14)
+
+[node name="Player" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_3y5cq")
+script = ExtResource("2_3y5cq")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(16, 0)
+shape = SubResource("RectangleShape2D_3y5cq")
+
+[node name="Key" type="Label" parent="."]
+offset_left = 16.0
+offset_top = -30.0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
