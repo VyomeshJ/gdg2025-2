@@ -1,37 +1,102 @@
-[gd_scene load_steps=5 format=3 uid="uid://emd0ujb6uh32"]
+[gd_scene load_steps=15 format=3 uid="uid://emd0ujb6uh32"]
 
-[ext_resource type="Texture2D" uid="uid://bl6da41dh0glv" path="res://Art/Player.png" id="1_y0qk3"]
+[ext_resource type="Texture2D" uid="uid://bo5il7vs7rdy1" path="res://Art/0x72_DungeonTilesetII_v1.7.png" id="1_3y5cq"]
+[ext_resource type="FontFile" uid="uid://bj2i7s1yvv6tn" path="res://Minecraft.ttf" id="2_2i4gt"]
 [ext_resource type="Script" uid="uid://dsybtwdtw4hj8" path="res://Scripts/PlayerScript.gd" id="2_3y5cq"]
+[ext_resource type="Texture2D" uid="uid://1bn5cnq2q5xe" path="res://Art/Flame/1.png" id="4_0ar0x"]
+[ext_resource type="Texture2D" uid="uid://dpckl4bpt286q" path="res://Art/Flame/2.png" id="5_slvmq"]
+[ext_resource type="Texture2D" uid="uid://cm8j4bslx0ncx" path="res://Art/Flame/3.png" id="6_ng3n2"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_3y5cq"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3y5cq"]
+size = Vector2(43, 14)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0ad8t"]
+font = ExtResource("2_2i4gt")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3y5cq"]
+atlas = ExtResource("1_3y5cq")
+region = Rect2(192, 32, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2i4gt"]
+atlas = ExtResource("1_3y5cq")
+region = Rect2(208, 32, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ad8t"]
+atlas = ExtResource("1_3y5cq")
+region = Rect2(224, 32, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x20fu"]
+atlas = ExtResource("1_3y5cq")
+region = Rect2(240, 32, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0ar0x"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_y0qk3")
+"texture": SubResource("AtlasTexture_3y5cq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2i4gt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ad8t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x20fu")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3y5cq"]
-size = Vector2(64, 14)
+[sub_resource type="SpriteFrames" id="SpriteFrames_f7am4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_0ar0x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_slvmq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ng3n2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
 
-[node name="Player" type="AnimatedSprite2D"]
-sprite_frames = SubResource("SpriteFrames_3y5cq")
+[node name="Player" type="Node2D"]
+scale = Vector2(2, 2)
 script = ExtResource("2_3y5cq")
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(16, 0)
+position = Vector2(5.5, 0)
 shape = SubResource("RectangleShape2D_3y5cq")
 
 [node name="Key" type="Label" parent="."]
-offset_left = 16.0
-offset_top = -30.0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 11.5
+offset_top = -15.0
+offset_right = 29.5
+offset_bottom = 10.0
+scale = Vector2(0.5, 0.5)
+label_settings = SubResource("LabelSettings_0ad8t")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -5)
+sprite_frames = SubResource("SpriteFrames_0ar0x")
+autoplay = "default"
+frame = 1
+frame_progress = 0.323804
+
+[node name="Flame" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(12, -7.5)
+sprite_frames = SubResource("SpriteFrames_f7am4")
+autoplay = "default"
+frame_progress = 0.663792
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

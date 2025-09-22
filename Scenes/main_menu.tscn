@@ -1,0 +1,74 @@
+[gd_scene load_steps=11 format=3 uid="uid://d3cnsin3iccud"]
+
+[ext_resource type="FontFile" uid="uid://bj2i7s1yvv6tn" path="res://Minecraft.ttf" id="1_ce3w2"]
+[ext_resource type="Script" uid="uid://b3p35jrvgw7nr" path="res://Scripts/main_menu.gd" id="1_cp0ys"]
+[ext_resource type="Texture2D" uid="uid://1bn5cnq2q5xe" path="res://Art/Flame/1.png" id="2_n45e2"]
+[ext_resource type="Texture2D" uid="uid://dpckl4bpt286q" path="res://Art/Flame/2.png" id="3_opfnp"]
+[ext_resource type="Texture2D" uid="uid://cm8j4bslx0ncx" path="res://Art/Flame/3.png" id="4_cp0ys"]
+[ext_resource type="PackedScene" uid="uid://d0enc50actt54" path="res://Objects/transition.tscn" id="6_yhxw7"]
+[ext_resource type="PackedScene" uid="uid://b1p3enfqc7cab" path="res://Objects/input_manager.tscn" id="7_trj04"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_yhxw7"]
+font = ExtResource("1_ce3w2")
+
+[sub_resource type="LabelSettings" id="LabelSettings_trj04"]
+font = ExtResource("1_ce3w2")
+font_size = 32
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_16hvj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_n45e2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_opfnp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_cp0ys")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_cp0ys")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -122.0
+offset_top = 19.0
+offset_right = 122.0
+offset_bottom = 42.0
+text = "Press 1 to play"
+label_settings = SubResource("LabelSettings_yhxw7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Main" type="Label" parent="."]
+offset_left = -66.0
+offset_top = -72.0
+offset_right = 67.0
+offset_bottom = -15.0
+text = "KeyRun"
+label_settings = SubResource("LabelSettings_trj04")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Flame" type="AnimatedSprite2D" parent="."]
+position = Vector2(70, -65)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_16hvj")
+autoplay = "default"
+
+[node name="Flame2" type="AnimatedSprite2D" parent="."]
+position = Vector2(-76, -66)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_16hvj")
+autoplay = "default"
+
+[node name="Transition" parent="." instance=ExtResource("6_yhxw7")]
+
+[node name="InputManager" parent="." instance=ExtResource("7_trj04")]

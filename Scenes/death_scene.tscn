@@ -1,0 +1,102 @@
+[gd_scene load_steps=10 format=3 uid="uid://d4bys3f7tytjh"]
+
+[ext_resource type="FontFile" uid="uid://bj2i7s1yvv6tn" path="res://Minecraft.ttf" id="1_mmcc8"]
+[ext_resource type="Script" uid="uid://4xggmfxg6er3" path="res://Scripts/DeathSceneScript.gd" id="1_w30ie"]
+[ext_resource type="PackedScene" uid="uid://d0enc50actt54" path="res://Objects/transition.tscn" id="2_1s3mq"]
+[ext_resource type="PackedScene" uid="uid://b1p3enfqc7cab" path="res://Objects/input_manager.tscn" id="4_5wyn5"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1s3mq"]
+font = ExtResource("1_mmcc8")
+
+[sub_resource type="LabelSettings" id="LabelSettings_w30ie"]
+font = ExtResource("1_mmcc8")
+
+[sub_resource type="Animation" id="Animation_cljc8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_5wyn5"]
+resource_name = "main"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.766667, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_seej8"]
+_data = {
+&"RESET": SubResource("Animation_cljc8"),
+&"main": SubResource("Animation_5wyn5")
+}
+
+[node name="DeathScene" type="Node2D"]
+script = ExtResource("1_w30ie")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Label" type="Label" parent="."]
+offset_left = -66.0
+offset_top = -55.0
+offset_bottom = -32.0
+scale = Vector2(2, 2)
+text = "You Died"
+label_settings = SubResource("LabelSettings_1s3mq")
+
+[node name="Score" type="Label" parent="."]
+offset_left = -91.0
+offset_top = -8.0
+offset_right = 92.0
+offset_bottom = 15.0
+text = "Score: 1000"
+label_settings = SubResource("LabelSettings_1s3mq")
+horizontal_alignment = 1
+
+[node name="Highscore" type="Label" parent="."]
+offset_left = -125.0
+offset_top = 24.0
+offset_right = 126.0
+offset_bottom = 59.0
+text = "HighScore: 1000
+"
+label_settings = SubResource("LabelSettings_1s3mq")
+horizontal_alignment = 1
+
+[node name="Transition" parent="." instance=ExtResource("2_1s3mq")]
+visible = false
+
+[node name="tryagain" type="Label" parent="."]
+offset_left = -129.0
+offset_top = 64.0
+offset_right = 130.0
+offset_bottom = 87.0
+text = "Press 1 to try again"
+label_settings = SubResource("LabelSettings_w30ie")
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="tryagain"]
+libraries = {
+&"": SubResource("AnimationLibrary_seej8")
+}
+autoplay = "main"
+
+[node name="InputManager" parent="." instance=ExtResource("4_5wyn5")]
