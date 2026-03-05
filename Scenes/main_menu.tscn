@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://d3cnsin3iccud"]
+[gd_scene format=3 uid="uid://d3cnsin3iccud"]
 
 [ext_resource type="FontFile" uid="uid://bj2i7s1yvv6tn" path="res://Minecraft.ttf" id="1_ce3w2"]
 [ext_resource type="Script" uid="uid://b3p35jrvgw7nr" path="res://Scripts/main_menu.gd" id="1_cp0ys"]
@@ -7,6 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://cm8j4bslx0ncx" path="res://Art/Flame/3.png" id="4_cp0ys"]
 [ext_resource type="PackedScene" uid="uid://d0enc50actt54" path="res://Objects/transition.tscn" id="6_yhxw7"]
 [ext_resource type="PackedScene" uid="uid://b1p3enfqc7cab" path="res://Objects/input_manager.tscn" id="7_trj04"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_cp0ys"]
+font = ExtResource("1_ce3w2")
+font_size = 12
 
 [sub_resource type="LabelSettings" id="LabelSettings_yhxw7"]
 font = ExtResource("1_ce3w2")
@@ -32,10 +36,22 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="MainMenu" type="Node2D"]
+[node name="MainMenu" type="Node2D" unique_id=1431654658]
 script = ExtResource("1_cp0ys")
 
-[node name="Label" type="Label" parent="."]
+[node name="Intro" type="Label" parent="." unique_id=1125951382]
+offset_left = -98.0
+offset_top = 10.0
+offset_right = 99.0
+offset_bottom = 154.0
+theme_override_font_sizes/font_size = 12
+text = "Pass the torch to others by pressing the number that pops up"
+label_settings = SubResource("LabelSettings_cp0ys")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Label" type="Label" parent="." unique_id=645167863]
 offset_left = -122.0
 offset_top = 19.0
 offset_right = 122.0
@@ -45,9 +61,9 @@ label_settings = SubResource("LabelSettings_yhxw7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=736362475]
 
-[node name="Main" type="Label" parent="."]
+[node name="Main" type="Label" parent="." unique_id=1314723865]
 offset_left = -66.0
 offset_top = -72.0
 offset_right = 67.0
@@ -57,18 +73,18 @@ label_settings = SubResource("LabelSettings_trj04")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Flame" type="AnimatedSprite2D" parent="."]
+[node name="Flame" type="AnimatedSprite2D" parent="." unique_id=1568045636]
 position = Vector2(70, -65)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_16hvj")
 autoplay = "default"
 
-[node name="Flame2" type="AnimatedSprite2D" parent="."]
+[node name="Flame2" type="AnimatedSprite2D" parent="." unique_id=205948169]
 position = Vector2(-76, -66)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_16hvj")
 autoplay = "default"
 
-[node name="Transition" parent="." instance=ExtResource("6_yhxw7")]
+[node name="Transition" parent="." unique_id=1359613769 instance=ExtResource("6_yhxw7")]
 
-[node name="InputManager" parent="." instance=ExtResource("7_trj04")]
+[node name="InputManager" parent="." unique_id=1571613840 instance=ExtResource("7_trj04")]
