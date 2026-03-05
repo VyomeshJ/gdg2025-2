@@ -26,9 +26,10 @@ Keyboard controls were not implemented during the jam, but basic keyboard suppor
 ## Game Screenshots
 <img width="840" height="624" alt="image" src="https://github.com/user-attachments/assets/c3c8fa1a-78d0-40d5-bfc9-6fad5a6c0d9e" />
 
-<img width="822" height="618" alt="image" src="https://github.com/user-attachments/assets/e8ab322f-d070-46e2-a14d-4bdb7a043e4e" />
+<img width="1680" height="1248" alt="image" src="https://github.com/user-attachments/assets/76560dd1-bb48-4893-83eb-a0cf00596678" />
 
-<img width="945" height="691" alt="image" src="https://github.com/user-attachments/assets/ec9d6428-ba66-4057-8b69-3fb2cd17d8f2" />
+<img width="1680" height="1248" alt="image" src="https://github.com/user-attachments/assets/4ef9a7c9-fb6d-4f0e-8f1a-2d504b8e518f" />
+
 
 
 
